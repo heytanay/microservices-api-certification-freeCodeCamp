@@ -32,15 +32,8 @@ app.get("/api/hello", function (req, res) {
 
 // WHOamI API endpoint
 app.get('/api/whoami',(req, res, next)=>{
-  
-  var browser_lang = req.headers['accept-language'];
-  var user_spec = req.header['User-Agent'];
-  var ip = req.ip;
-  
-  
-  res.json({"ipaddress": req.ip,"language": browser_lang,"software": user_spec});
+   res.json({"ipaddress":req.ip,"language":req.headers['accept-language'], "software":req.headers['user-agent']});
 });
-
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
